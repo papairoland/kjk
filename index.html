@@ -22,3 +22,55 @@
       <p class="game-author">Ian Livingstone stílusában</p>
     </div>
   </div>
+  <div id="screen-game" class="screen">
+    <header id="hud">
+      <div class="hud-stat" id="hud-stamina">
+        <span class="hud-label">❤️ Életerő</span>
+        <span class="hud-value" id="val-stamina">20/20</span>
+        <div class="hud-bar-bg">
+          <div class="hud-bar" id="bar-stamina"></div>
+        </div>
+      </div>
+      <div class="hud-stat" id="hud-skill">
+        <span class="hud-label">⚔️ Ügyesség</span>
+        <span class="hud-value" id="val-skill">10</span>
+      </div>
+      <div class="hud-stat" id="hud-luck">
+        <span class="hud-label">🍀 Szerencse</span>
+        <span class="hud-value" id="val-luck">8</span>
+      </div>
+      <div class="hud-stat" id="hud-food">
+        <span class="hud-label">🍖 Étel</span>
+        <span class="hud-value" id="val-food">2</span>
+      </div>
+      <button id="btn-eat" class="btn btn-food" title="Eszel egyet (visszaad 4 életerőt)">
+        🍖 Étkezés
+      </button>
+    </header>
+    <div id="passage-header">
+      <span id="passage-icon">🏰</span>
+      <h2 id="passage-title">Cím</h2>
+    </div>
+    <main id="passage-content">
+      <p id="passage-text">Szöveg...</p>
+      <div id="items-box" class="items-box hidden">
+        <span>🎒 Tárgyaid: </span>
+        <span id="items-list"></span>
+      </div>
+      <div id="combat-area" class="combat-area hidden">
+        <h3 id="enemy-name">Ellenség neve</h3>
+        <div class="combat-stats">
+          <div class="combat-stat">
+            <span>❤️ Ellenfél életereje</span>
+            <span id="enemy-stamina-val">0</span>
+            <div class="hud-bar-bg">
+              <div class="hud-bar enemy-bar" id="bar-enemy"></div>
+            </div>
+          </div>
+        </div>
+        <div id="combat-log" class="combat-log"></div>
+        <button id="btn-attack" class="btn btn-danger">⚔️ Támadás!</button>
+      </div>
+      <div id="choices-area"></div>
+    </main>
+  </div>
