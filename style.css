@@ -204,3 +204,144 @@ body {
 .enemy-bar {
   background: #e67e22;
 }
+#passage-header {
+  width: 100%;
+  max-width: 720px;
+  padding: 1.2rem 1.5rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+#passage-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.5));
+}
+#passage-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+#screen-game {
+  align-items: center;
+}
+main#passage-content {
+  width: 100%;
+  max-width: 720px;
+  padding: 1.5rem;
+  animation: fadeIn 0.4s ease;
+}
+#passage-text {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+#passage-text strong {
+  color: var(--gold-light);
+}
+#passage-text em {
+  color: #6fcf97;
+  font-style: italic;
+}
+.items-box {
+  background: rgba(201, 168, 76, 0.07);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: var(--radius);
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.items-box span:first-child {
+  color: var(--gold);
+}
+.combat-area {
+  background: rgba(192, 57, 43, 0.07);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.combat-area h3 {
+  font-family: var(--font-title);
+  color: #e74c3c;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+.combat-stats {
+  margin-bottom: 1rem;
+}
+.combat-stat span:first-child {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+#enemy-stamina-val {
+  font-family: var(--font-title);
+  color: #e67e22;
+}
+.combat-log {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.log-entry {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease;
+}
+.log-player { background: rgba(39, 174, 96, 0.1); color: #6fcf97; }
+.log-enemy  { background: rgba(192, 57, 43, 0.1); color: #e07070; }
+.log-draw   { background: rgba(150, 150, 150, 0.1); color: #aaa; }
+.log-info   { color: var(--text-muted); font-style: italic; }
+#screen-death,
+#screen-victory {
+  background-image:
+    radial-gradient(ellipse at center, rgba(100, 10, 10, 0.2) 0%, transparent 70%);
+  padding: 2rem;
+}
+#screen-victory {
+  background-image:
+    radial-gradient(ellipse at center, rgba(201, 168, 76, 0.2) 0%, transparent 70%);
+}
+.end-content {
+  text-align: center;
+  max-width: 500px;
+}
+.end-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+.end-content h2 {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.end-content.victory h2 {
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
+}
+.end-content p {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+.hidden {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .game-title { font-size: 2.2rem; }
+  #hud { gap: 0.8rem; }
+  .hud-stat { min-width: 60px; }
+  #passage-title { font-size: 1.1rem; }
+  #passage-text { font-size: 1rem; }
+}
