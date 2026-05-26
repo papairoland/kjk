@@ -92,3 +92,115 @@ body {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+.btn {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+.btn:active {
+  transform: scale(0.96);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), #a07830);
+  color: #1a0e00;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.4);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.6);
+}
+.btn-danger {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(192, 57, 43, 0.4);
+}
+.btn-danger:hover {
+  background: linear-gradient(135deg, #e74c3c, var(--red));
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.6);
+}
+.btn-choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  margin-bottom: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.btn-choice:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  padding-left: 1.6rem;
+}
+.btn-food {
+  background: rgba(39, 174, 96, 0.15);
+  color: #6fcf97;
+  border: 1px solid rgba(39, 174, 96, 0.3);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+}
+.btn-food:hover {
+  background: rgba(39, 174, 96, 0.25);
+}
+#hud {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(28, 21, 16, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  min-width: 80px;
+}
+.hud-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.hud-value {
+  font-family: var(--font-title);
+  color: var(--gold-light);
+  font-size: 1rem;
+}
+.hud-bar-bg {
+  background: rgba(255,255,255,0.08);
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 3px;
+  width: 80px;
+}
+.hud-bar {
+  height: 100%;
+  background: var(--red);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 100%;
+}
+.enemy-bar {
+  background: #e67e22;
+}
