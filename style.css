@@ -1,0 +1,33 @@
+:root {
+  --bg:           #0d0a07;
+  --bg-card:      #1c1510;
+  --bg-parchment: #f5e9c8;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c97a;
+  --red:          #c0392b;
+  --red-dark:     #922b21;
+  --green:        #27ae60;
+  --text-light:   #f0e6cc;
+  --text-muted:   #9e8a6e;
+  --border:       #3d2e1a;
+  --font-title:   'Cinzel', serif;
+  --font-body:    'EB Garamond', serif;
+  --radius:       8px;
+  --shadow:       0 4px 24px rgba(0,0,0,0.7);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--bg);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(100, 60, 10, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(60, 10, 10, 0.12) 0%, transparent 60%);
+}
