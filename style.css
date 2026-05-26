@@ -31,3 +31,64 @@ body {
     radial-gradient(ellipse at 20% 20%, rgba(100, 60, 10, 0.12) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 80%, rgba(60, 10, 10, 0.12) 0%, transparent 60%);
 }
+.screen {
+  display: none;
+  min-height: 100vh;
+}
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+#screen-start {
+  background-image:
+    radial-gradient(ellipse at center, rgba(100, 60, 10, 0.25) 0%, transparent 70%);
+  padding: 2rem;
+}
+.start-content {
+  text-align: center;
+  max-width: 560px;
+}
+.start-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.6));
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+.game-title {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+.game-subtitle {
+  font-family: var(--font-title);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.game-desc {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+.game-author {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
