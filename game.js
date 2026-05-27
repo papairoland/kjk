@@ -69,3 +69,33 @@ const passages = {
       { text: "🚪 Otthagyod az italt és bemész a titkos ajtón", next: 5 },
     ],
   },
+  4: {
+    title: "A kastély előcsarnoka",
+    icon: "🏛️",
+    text: `A hatalmas előcsarnokban néma csend honol. Fáklyák lobognak a falakon, hosszú árnyékokat vetve a kőpadlóra.<br><br>Két folyosó nyílik előtted:<br>⬅️ <strong>Balra</strong> – penészes szag és zörgő láncok hangja szűrődik ki<br>➡️ <strong>Jobbra</strong> – fojtott fény és díszes ajtók sorakoznak`,
+    choices: [
+      { text: "⛓️ Balra mész – a börtönök felé", next: 7 },
+      { text: "👑 Jobbra mész – a trónterem felé", next: 8 },
+    ],
+  },
+  5: {
+    title: "Titkos folyosó",
+    icon: "🚪",
+    text: `Az ajtó mögött egy szűk, sötét folyosó húzódik. Ázott kő szaga csap meg. Valahonnan mélységből furcsa zörejek hallatszanak.`,
+    choices: [
+      { text: "🕯️ Előre – bemérsz a sötétbe", next: 9 },
+      { text: "🔙 Visszafordulsz az ösvényre", next: 1 },
+    ],
+  },
+  6: {
+    title: "A Szerencse-ital",
+    icon: "🧪",
+    text: `Kihúzod a dugót és megiszod az italt. Melegség terjed szét a testedben – a szerencse határozottan mosolyog rád!<br><em>(Szerencse +2)</em><br><br>Belöksz a titkos ajtón és besétálsz a sötét folyosóra.`,
+    onEnter: function() {
+      player.luck = Math.min(player.maxLuck + 2, player.luck + 2);
+      player.maxLuck = Math.max(player.maxLuck, player.luck);
+    },
+    choices: [
+      { text: "🚪 Bemérsz a titkos folyosóra", next: 9 },
+    ],
+  },
