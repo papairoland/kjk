@@ -38,3 +38,34 @@ function eatFood() {
   }
   return false;
 }
+const passages = {
+  1: {
+    title: "A Fekete Kastély kapuja",
+    icon: "🏰",
+    text: `Hosszú, fárasztó utazás után végre megérkezel <strong>Morgath, a Sötét Úr</strong> fellegvárához. A fekete kövekből emelt kastély falai félelmet árasztanak.<br><br>A főkapu előtt <strong>két fegyveres őr</strong> vigyáz. Azonban észreveszel egy <strong>oldalsó ösvényt</strong> is, amely a fal mentén kanyarog.<br><br><em>Küldetésed: eljutni Morgath-hoz és legyőzni.</em>`,
+    choices: [
+      { text: "⚔️ Megrohanod a főkaput", next: 2 },
+      { text: "🌿 Az oldalsó ösvényt követed", next: 3 },
+    ],
+  },
+  2: {
+    title: "Az őrök",
+    icon: "⚔️",
+    text: `Az őrök azonnal észrevesznek és kardot rántanak!<br>"Állj! Senki sem léphet be a Sötét Úr engedélye nélkül!"<br><br>Nincs más választás – <strong>harcolnod kell!</strong>`,
+    combat: {
+      name: "Kastélyőr",
+      skill: 7,
+      stamina: 6,
+      rewardText: `Legyőzöd az őröket, és benyomulsz a kastélyba!`,
+      nextPassage: 4,
+    },
+  },
+  3: {
+    title: "Az oldalsó ösvény",
+    icon: "🌿",
+    text: `Az ösvényen haladva egy szerencsétlen kalandor holttestét találod a bokrok között. Még szorítja kezében a palackját – egy <strong>kékes Szerencse-ital</strong>.<br><br>A fal mellett egy <strong>titkos ajtót</strong> is észreveszel.`,
+    choices: [
+      { text: "🧪 Felveszed az italt, majd bemész a titkos ajtón", next: 6 },
+      { text: "🚪 Otthagyod az italt és bemész a titkos ajtón", next: 5 },
+    ],
+  },
