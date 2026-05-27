@@ -99,3 +99,43 @@ const passages = {
       { text: "🚪 Bemérsz a titkos folyosóra", next: 9 },
     ],
   },
+  7: {
+    title: "A börtönök",
+    icon: "⛓️",
+    text: `A börtön legmélyén egy ősz hajú, legyengült lovagot találsz: <strong>Aldric</strong>. Rácsain át elmeséli, hogy Morgath fogságában tartja már egy éve.<br><br>"Halld! <strong>Morgath-ot csak ezüst karddal lehet megölni!</strong> A trónteremben lóg egy ilyen kard a falon – vidd el, mielőtt szembeszállsz vele!"`,
+    onEnter: function() {
+      addItem("Aldric tanácsa (ezüst kard)");
+    },
+    choices: [
+      { text: "🔓 Kiszabadítod Aldric-ot (csináltok kerülőt)", next: 10 },
+      { text: "↩️ Hálálkodva elhagyod a börtönt", next: 4 },
+    ],
+  },
+  8: {
+    title: "A trónterem",
+    icon: "👑",
+    text: `Óvatosan benyitsz a trónterembe. Üresnek tűnik... de hirtelen <strong>kattanást</strong> hallasz! Nyílcsapda!`,
+    luckTest: {
+      successText: `Ösztönösen kitérsz, és a nyíl a falba csapódik melletted. Sértetlenül megúszod! A trón mögött megpillantasz egy ezüstösen csillogó kardot a falon.`,
+      failText: `A nyíl megkarcolja a karodat – elveszítesz <strong>2 életerőt</strong>. Fájdalmad ellenére észreveszel egy ezüstösen csillogó kardot a falon.`,
+      failEffect: function() {
+        player.stamina = Math.max(0, player.stamina - 2);
+      },
+      nextPassage: 11,
+    },
+  },
+  9: {
+    title: "Az Óriáspók",
+    icon: "🕷️",
+    text: `A folyosón haladva sűrű pókháló vesz körül. A mennyezetről lassan ereszkedik le egy <strong>hatalmas Óriáspók</strong> – szeme vörösen izzik a sötétben!<br><br>Harcolnod kell!`,
+    combat: {
+      name: "Óriáspók",
+      skill: 6,
+      stamina: 8,
+      rewardText: `A pókot legyőzöd! Mellette egy kis ládikót találsz élelmiszerrel és gyógyfűvel – visszaszerzed <strong>4 életerődet</strong>.`,
+      rewardEffect: function() {
+        player.stamina = Math.min(player.maxStamina, player.stamina + 4);
+      },
+      nextPassage: 12,
+    },
+  },
