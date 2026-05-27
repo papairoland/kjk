@@ -139,3 +139,55 @@ const passages = {
       nextPassage: 12,
     },
   },
+  10: {
+    title: "Aldric segít",
+    icon: "🤝",
+    text: `Feltöröd Aldric cellájának zárját. A lovag lassan kikecmereg, majd mélyen meghajol. "Örök hálám, hős! Ismerem a kastélyt – tudok egy <strong>titkos folyosót</strong>, ami egyenesen Morgath termébe vezet."<br><br>Útközben Aldric bekötözi sebeidet. <em>(Életerő +4)</em>`,
+    onEnter: function() {
+      player.stamina = Math.min(player.maxStamina, player.stamina + 4);
+    },
+    choices: [
+      { text: "⚔️ Elindultok Morgath termébe!", next: 14 },
+    ],
+  },
+  11: {
+    title: "Az Ezüst Kard",
+    icon: "🗡️",
+    text: `A falon lógó kard ezüstösen ragyog – <strong>ez az Ezüst Kard</strong>, Morgath egyetlen gyengesége! Leveszed a falról és megérzed a súlyát a kezedben. Ez az igazi fegyver a Sötét Úr ellen.`,
+    onEnter: function() {
+      addItem("Ezüst Kard");
+    },
+    choices: [
+      { text: "⚔️ Veszed a kardot és Morgath-hoz indulsz", next: 14 },
+    ],
+  },
+  12: {
+    title: "A titkos kamra",
+    icon: "💰",
+    text: `A pók legyőzése után egy rejtett ajtó tűnik elő. Mögötte kincseskamra – és ami fontosabor: élelmiszer, gyógyszerek.<br><em>+4 életerő (már elszámolva)</em><br><br>Innen egy folyosó vezet mélyebbre a kastélyba.`,
+    choices: [
+      { text: "⚔️ Előre – Morgath terébe!", next: 14 },
+    ],
+  },
+  14: {
+    title: "Morgath terme",
+    icon: "👹",
+    text: `Hatalmas fekete ajtón léptek be egy félelmetes terembe. A trón előtt áll <strong>Morgath, a Sötét Úr</strong> – fekete páncélban, égő vörös szemekkel.<br><br>"Merészen jöttél, kis hős... de itt véget ér a kalandog!"`,
+    get combat() {
+      return {
+        name: "Morgath, a Sötét Úr",
+        skill: hasItem("Ezüst Kard") ? 9 : 11,
+        stamina: 14,
+        isBoss: true,
+        rewardText: null,
+        nextPassage: 15,
+      };
+    },
+  },
+  15: {
+    title: "Győzelem!",
+    icon: "🏆",
+    text: `Morgath térdre rogy, fekete páncélja széthasad. Egy pillanat – majd hamuvá omlik, szanaszét fújja a szél.<br><br>A kastély falai megremegnek. A sötét varázslat szétfoszlik, mint köd a napfényben.<br><br><strong>Megmentetted a királyságot.</strong> Évszázadokig fognak énekelni rólad a bárdok, és neved bevésődin a történelem lapjaira.`,
+    isVictory: true,
+  },
+};
