@@ -359,3 +359,35 @@ function addLogEntry(type, text) {
   log.appendChild(entry);
   log.scrollTop = log.scrollHeight;
 }
+document.getElementById("btn-start").addEventListener("click", () => {
+  startNewGame();
+});
+document.getElementById("btn-restart-death").addEventListener("click", startNewGame);
+document.getElementById("btn-restart-victory").addEventListener("click", startNewGame);
+document.getElementById("btn-attack").addEventListener("click", doCombatRound);
+document.getElementById("btn-eat").addEventListener("click", () => {
+  if (player.food <= 0) {
+    alert("Nincs több élelmiszered!");
+    return;
+  }
+  if (player.stamina >= player.maxStamina) {
+    alert("Az életerőd már teli van, nem kell enned!");
+    return;
+  }
+  eatFood();
+});
+function startNewGame() {
+  player = {
+    skill:      10,
+    stamina:    20,
+    maxStamina: 20,
+    luck:       8,
+    maxLuck:    8,
+    food:       2,
+    items:      [],
+  };
+  combat = null;
+  document.getElementById("btn-attack").disabled = false;
+  renderPassage(1);
+}
+showScreen("screen-start");
