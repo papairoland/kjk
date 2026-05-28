@@ -307,3 +307,55 @@ function startCombat(enemyTemplate) {
   document.getElementById("combat-area").classList.remove("hidden");
   document.getElementById("choices-area").innerHTML = "";
 }
+function doCombatRound() {
+  if (!combat) return;
+  const playerRoll = twoD6() + player.skill;
+  const enemyRoll  = twoD6() + combat.skill;
+  if (playerRoll > enemyRoll) {
+    combat.stamina -= 2;
+    addLogEntry("player", `Te: ${playerRoll} vs Ellenfél: ${enemyRoll} → ⚔️ Te találsz! (${combat.name}: -2 életerő)`);
+  } else if (enemyRoll > playerRoll) {
+    player.stamina -= 2;
+    addLogEntry("enemy", `Te: ${playerRoll} vs Ellenfél: ${enemyRoll} → 💢 ${combat.name} talál! (Te: -2 életerő)`);
+  } else {
+    addLogEntry("draw", `Te: ${playerRoll} vs Ellenfél: ${enemyRoll} → 🤝 Döntetlen, egyik sem sérül.`);
+  }
+  const enemyPct = Math.max(0, (combat.stamina / combat.maxStamina) * 100);
+  document.getElementById("bar-enemy").style.width       = enemyPct + "%";
+  document.getElementById("enemy-stamina-val").textContent = Math.max(0, combat.stamina);
+  updateHUD();
+  if (player.stamina <= 0) {
+    addLogEntry("enemy", `💀 Elesett a hős! ${combat.name} győzedelmeskedett.`);
+    document.getElementById("btn-attack").disabled = true;
+    setTimeout(() => showScreen("screen-death"), 1200);
+    return;
+  }
+  if (combat.stamina <= 0) {
+    addLogEntry("player", `🎉 Legyőzted: ${combat.name}!`);
+    document.getElementById("btn-attack").disabled = true;
+    if (combat.rewardText) {
+      document.getElementById("passage-text").innerHTML += `<br><br><span style="color:#6fcf97">${combat.rewardText}</span>`;
+    }
+    if (combat.rewardEffect) combat.rewardEffect();
+    updateHUD();
+    const area = document.getElementById("choices-area");
+    area.innerHTML = "";
+    const btn = document.createElement("button");
+    btn.className = "btn btn-choice";
+    btn.textContent = "➡️ Tovább";
+    btn.addEventListener("click", () => {
+      const next = combat.nextPassage;
+      combat = null;
+      renderPassage(next);
+    });
+    area.appendChild(btn);
+  }
+}
+function addLogEntry(type, text) {
+  const log   = document.getElementById("combat-log");
+  const entry = document.createElement("div");
+  entry.className = `log-entry log-${type}`;
+  entry.textContent = text;
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+}
