@@ -265,3 +265,22 @@ function renderChoices(choices) {
     area.appendChild(btn);
   });
 }
+function runLuckTest(luckTestData) {
+  const success = testLuck();
+  const currentText = document.getElementById("passage-text").innerHTML;
+  if (success) {
+    document.getElementById("passage-text").innerHTML = currentText + `<br><br><span style="color:#6fcf97">🍀 <strong>Szerencse teszt: SIKERES!</strong></span><br>` + luckTestData.successText;
+  } else {
+    if (luckTestData.failEffect) luckTestData.failEffect();
+    document.getElementById("passage-text").innerHTML = currentText + `<br><br><span style="color:#e07070">💢 <strong>Szerencse teszt: SIKERTELEN.</strong></span><br>` + luckTestData.failText;
+  }
+  updateHUD();
+  if (checkDeath()) return;
+  const area = document.getElementById("choices-area");
+  area.innerHTML = "";
+  const btn = document.createElement("button");
+  btn.className = "btn btn-choice";
+  btn.textContent = "➡️ Tovább";
+  btn.addEventListener("click", () => renderPassage(luckTestData.nextPassage));
+  area.appendChild(btn);
+}
