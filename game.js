@@ -220,3 +220,48 @@ function checkDeath() {
   }
   return false;
 }
+function renderPassage(id) {
+  currentPassageId = id;
+  const p = passages[id];
+  if (!p) {
+    console.error("Nincs ilyen jelenet:", id);
+    return;
+  }
+  if (p.onEnter) p.onEnter();
+  updateHUD();
+  if (checkDeath()) return;
+  if (p.isVictory) {
+    showScreen("screen-victory");
+    document.getElementById("victory-text").innerHTML = p.text;
+    return;
+  }
+  showScreen("screen-game");
+  document.getElementById("passage-icon").textContent = p.icon || "📖";
+  document.getElementById("passage-title").textContent = p.title;
+  document.getElementById("passage-text").innerHTML = p.text;
+  document.getElementById("combat-area").classList.add("hidden");
+  const choicesArea = document.getElementById("choices-area");
+  choicesArea.innerHTML = "";
+  if (p.combat) {
+    startCombat(p.combat);
+    return;
+  }
+  if (p.luckTest) {
+    runLuckTest(p.luckTest);
+    return;
+  }
+  if (p.choices) {
+    renderChoices(p.choices);
+  }
+}
+function renderChoices(choices) {
+  const area = document.getElementById("choices-area");
+  area.innerHTML = "";
+  choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-choice";
+    btn.innerHTML = choice.text;
+    btn.addEventListener("click", () => renderPassage(choice.next));
+    area.appendChild(btn);
+  });
+}
