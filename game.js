@@ -191,3 +191,32 @@ const passages = {
     isVictory: true,
   },
 };
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+function updateHUD() {
+  document.getElementById("val-stamina").textContent = `${player.stamina}/${player.maxStamina}`;
+  document.getElementById("val-skill").textContent  = player.skill;
+  document.getElementById("val-luck").textContent   = player.luck;
+  document.getElementById("val-food").textContent   = player.food;
+  const pct = Math.max(0, (player.stamina / player.maxStamina) * 100);
+  document.getElementById("bar-stamina").style.width = pct + "%";
+  const itemsBox  = document.getElementById("items-box");
+  const itemsList = document.getElementById("items-list");
+  if (player.items.length > 0) {
+    itemsList.textContent = player.items.join(", ");
+    itemsBox.classList.remove("hidden");
+  } else {
+    itemsBox.classList.add("hidden");
+  }
+}
+function checkDeath() {
+  if (player.stamina <= 0) {
+    player.stamina = 0;
+    updateHUD();
+    showScreen("screen-death");
+    return true;
+  }
+  return false;
+}
