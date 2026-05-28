@@ -284,3 +284,26 @@ function runLuckTest(luckTestData) {
   btn.addEventListener("click", () => renderPassage(luckTestData.nextPassage));
   area.appendChild(btn);
 }
+function startCombat(enemyTemplate) {
+  combat = {
+    name:       enemyTemplate.name,
+    skill:      enemyTemplate.skill,
+    stamina:    enemyTemplate.stamina,
+    maxStamina: enemyTemplate.stamina,
+    rewardText: enemyTemplate.rewardText   || null,
+    rewardEffect: enemyTemplate.rewardEffect || null,
+    nextPassage: enemyTemplate.nextPassage,
+    isBoss:      enemyTemplate.isBoss         || false,
+  };
+  document.getElementById("enemy-name").textContent    = "⚔️ Ellenfél: " + combat.name;
+  document.getElementById("enemy-stamina-val").textContent = combat.stamina;
+  document.getElementById("bar-enemy").style.width     = "100%";
+  const log = document.getElementById("combat-log");
+  log.innerHTML = "";
+  addLogEntry("info", `A harc kezdődik! ${combat.name} – Ügyesség: ${combat.skill}, Életerő: ${combat.stamina}`);
+  if (combat.isBoss && hasItem("Ezüst Kard")) {
+    addLogEntry("info", "⚔️ Az Ezüst Kard ragyog a kezedben – Morgath legyengült előled!");
+  }
+  document.getElementById("combat-area").classList.remove("hidden");
+  document.getElementById("choices-area").innerHTML = "";
+}
